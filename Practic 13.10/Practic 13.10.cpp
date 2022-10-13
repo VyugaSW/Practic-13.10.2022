@@ -19,10 +19,15 @@ int main()
 	//fprintf();
 	//feof()
 	//fopen_s()
-	// 
+
+	// символы:
 	// fgetc(FILE* f); - посимвольное чтение
 	// fputc(int c, FILE* f); - посимвольная запись в файл
 	// fflush(FILE* f); - очищает буфер
+
+	// строки
+	//fgets(char* s, int n, FILE* f) - построчное чтение из файла
+	//fputs(char* s, FILE* f) -построчная запись в файл
 	//FILE* out;
 	//r - |открывает файл только лишь для чтения
 	//w - |открывает файл только лишь для записи (информация прежняя стирается)
@@ -130,5 +135,22 @@ int main()
 		}
 	}
 	*/
+	/*
+	const char* path = "C:\\Test\\test.txt";
+	FILE* f;
+	int len = 0;
+	char buff[128];
+	if (!fopen_s(&f, path, "r")) {
+		while (!feof(f)) {
+			fgets(buff, 127, f);
+			len = strlen(buff);
+			if (buff[len - 1] == '\n')
+				buff[len - 1] = '\0';
+			puts(buff);
+		}
+	}
+	*/
+
+
 }
 
