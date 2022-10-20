@@ -1,11 +1,12 @@
 ﻿
 #include <Windows.h>
 #include <iostream>
+#include <io.h>
 
 #define _CRT_SECURE_NO_WARNINGS
 
 using namespace std;
-
+#define mode  1
 struct Item {
 	char title[20];
 	unsigned int num;
@@ -13,6 +14,9 @@ struct Item {
 };
 
 
+
+
+#if mode == 0
 int main()
 {    
 	//fscanf_s();
@@ -153,4 +157,136 @@ int main()
 
 
 }
+#else
+int main() {
+	setlocale(LC_ALL, "");
 
+	/*const char* path = "C:\\Test\\data.dat";
+	int arr[5];
+
+	FILE* out;
+	if (!fopen_s(&out, path, "wb")) {
+		for (int i = 0; i < 5; i++) {
+			arr[i] = i + 2;
+			fwrite(&arr[i], sizeof(int), 1, out);
+		}
+	}
+
+	FILE* in;
+	char c[512];
+	if (!fopen_s(&in, path, "rb")) {
+		fread(&c, 1, 512, in);
+		cout << c << endl;
+	}*/
+
+	/*const char* path = "C:\\Test\\data.dat";
+	int arr[10], a;
+	FILE* f;
+
+	//запись данных в файл
+	if (!fopen_s(&f, path, "wb"))
+	{
+		for (int i = 0; i < 10; i++) {
+			arr[i] = i + 1;
+			fwrite(&arr[i], sizeof(int), 1, f);
+		}
+		fclose(f);
+	}
+
+	//считывание десятого числа в файле
+	if (!fopen_s(&f, path, "rb")) {
+		for (int i = 0; i < 10; i++) {
+			fread(&a, sizeof(int), 1, f);
+		}
+		cout << a << endl;
+		fclose(f);
+	}
+
+	//считывание первого числа в файле
+	if (!fopen_s(&f, path, "rb")) {
+		fread(&a, sizeof(int), 1, f);
+		cout << a << endl;
+		fclose(f);
+	}*/
+
+	//int fseek(FILE* filename, long int offset, int origin)
+	// - выполняет переход на нужную позицию в файле
+	// offset - смещение (кол-во байтов, на которые будет смещен указатель файла)
+	// origin - позиция начала отсчета (SEEK_SET,SEEK_CUR,SEEK_END) -- (начало, текующая позиция, конец файла)
+	/*onst char* path = "C:\\Test\\data.dat";
+	int n = 10, imax, imin, i;
+	int* a, max, min, k;
+	FILE* f;
+	if (!fopen_s(&f, path, "wb"))
+	{
+		for (int i = 1; i < 11; i++) {
+			fwrite(&i, sizeof(int), 1, f);
+		}
+		fclose(f);
+	}
+	if (!fopen_s(&f, path, "rb")) {
+		for (int i = 0; i < 10; i++) {
+			fread(&k, sizeof(int), 1, f);
+			cout << k << endl;
+		}
+
+		fclose(f);
+	}
+	if (!fopen_s(&f, path, "r+b")) {
+		a = new int[n];
+		fread(a, sizeof(int), n, f);
+		for (imax = imin = 0, max = min = a[0], i = 1; i < n; i++) {
+			if (a[i] > max) {
+				max = a[i];
+				imax = i;
+			}
+			if (a[i] < min) {
+				min = a[i];
+				imin = i;
+			}
+		}
+		fseek(f, sizeof(int)*imax, SEEK_SET);
+		fwrite(&min, sizeof(int), 1, f);
+		fseek(f, sizeof(int)*imin, SEEK_SET);
+		fwrite(&max, sizeof(int), 1, f);
+		fclose(f);
+		delete[]a;
+	}
+	cout << endl;
+	if (!fopen_s(&f, path, "rb")) {
+		for (int i = 0; i < 10; i++) {
+			fread(&k, sizeof(int), 1, f);
+			cout << k << endl;
+		}
+
+		fclose(f);
+	}*/
+
+	//long _findfirst(char* path, _finddata_t* fileinfo)
+	//int _findnext(long done, _finddata_t* fileinfo) | done - результат выполнения работы _findfirst
+
+	/*struct _finddata_t myfileinfo;
+	//time_create
+	//time_access
+	//time_write
+	//size
+	//name
+
+	long done = _findfirst("*.cpp", &myfileinfo);
+	cout << myfileinfo.name;*/
+	/*
+	struct _finddata_t fileinfo;
+	char str[200] = "C:\\Test\\*.txt";
+	intptr_t done = _findfirst(str, &fileinfo);
+	do 
+	{
+	cout << fileinfo.name << endl;
+	} while (_findnext(done, &fileinfo) != -1);*/
+	
+	
+	
+	
+	
+	
+}
+#endif
