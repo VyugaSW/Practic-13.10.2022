@@ -283,7 +283,20 @@ int main() {
 	cout << fileinfo.name << endl;
 	} while (_findnext(done, &fileinfo) != -1);*/
 	
-	
+	struct _finddata_t fileinfo;
+	char path[200];
+	char mask[20];
+	cout << "Enter a full path (for example, \"D:\\\")\n";
+	cin >> path;
+	cout << "Enter mask (for exmaple, \"*.* or *.txt\")\n";
+	cin >> mask;
+
+	strcat_s(path, mask);
+
+	intptr_t done = _findfirst(path, &fileinfo);
+	do {
+		cout << fileinfo.name << " " << fileinfo.size << endl;
+	} while (_findnext(done, &fileinfo) != -1);
 	
 	
 	
